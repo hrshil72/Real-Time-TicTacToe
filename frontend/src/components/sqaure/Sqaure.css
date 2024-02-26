@@ -1,0 +1,7 @@
+.sqaure {
+  width: 100px;
+  height: 100px;
+  background-color: #4b485f;
+  border-radius: 8px;
+  cursor: pointer;
+}
