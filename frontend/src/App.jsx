@@ -9,6 +9,7 @@ const App = () => {
   ];
 
   const [gameState, setGameState] = useState(sqaures);
+  const [currentPlayer, setCurrentPlayer] = useState("circle");
 
   return (
     <div className="container">
@@ -20,7 +21,15 @@ const App = () => {
       <div className="sqaure-wrapper">
         {gameState.map((item) => {
           return item.map((e) => {
-            return <Sqaure setGameState={setGameState} id={e} key={e} />;
+            return (
+              <Sqaure
+                currentPlayer={currentPlayer}
+                setCurrentPlayer={setCurrentPlayer}
+                setGameState={setGameState}
+                id={e}
+                key={e}
+              />
+            );
           });
         })}
       </div>
