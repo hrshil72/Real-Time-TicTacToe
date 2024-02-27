@@ -12,6 +12,7 @@ const App = () => {
   const [currentPlayer, setCurrentPlayer] = useState("circle");
   const [finishedState, setFinishedState] = useState(false);
   const [finishedArrayState, setFinishedArrayState] = useState([]);
+  const [playOnline, setPlayOnline] = useState(false);
 
   const checkWinner = () => {
     //for row
@@ -63,6 +64,14 @@ const App = () => {
       setFinishedState(winner);
     }
   }, [gameState]);
+
+  if (!playOnline) {
+    return (
+      <div className="container">
+        <button className="play-online">Play Online</button>
+      </div>
+    );
+  }
 
   return (
     <div className="container">
