@@ -1,44 +1,41 @@
-@import url("https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
-  font-family: "Happy Monkey", system-ui;
-}
-
-html,
+@import url("https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,800;1,900&display=swap");
 body {
-  width: 100%;
-  height: 100%;
-  background-color: #201f30;
+  background-color: #1f1f2f;
   color: white;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
 }
-
-.container {
+.main-div {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
   flex-direction: column;
-  gap: 30px;
-  margin-top: 50px;
 }
 
-.water-bg {
-  background-color: #4b485f;
-  border-radius: 8px;
+.playOnline {
+  font-weight: 700;
+  border: none;
+  background-color: #e4ca56;
+  font-size: 60px;
+  cursor: pointer;
+  margin-top: 40vh;
+  padding: 6px 10px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.water-background {
+  background-color: #4b495f;
 }
 
 .game-heading {
-  padding: 10px 55px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  text-align: center;
   font-size: 40px;
 }
 
-.sqaure-wrapper {
+.square-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 10px;
@@ -47,44 +44,47 @@ body {
 
 .move-detection {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  /* width: 350px; */
-  gap: 10vw;
+  align-items: center;
+  width: 400px;
+}
+
+.finished-state {
+  font-size: 30px;
+  text-align: center;
 }
 
 .left,
 .right {
+  height: 30px;
   width: 120px;
-  height: 40px;
   background-color: red;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   border-bottom-left-radius: 50px;
+  background-color: #4b495f;
   border-top-right-radius: 50px;
-  font-family: sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-}
-.left {
-  background-color: #4b485f;
+  padding-top: 7px;
+  font-size: 18px;
+  padding-bottom: 5px;
+  text-align: center;
 }
 
-.right {
-  background-color: #de7ea1;
+.waiting {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 44px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
-.play-online {
-  background-color: #fadb5d;
-  color: black;
-  font-size: 30px;
-  font-family: sans-serif;
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 20%;
+.current-move-cross {
+  background-color: #3fa7f0 !important;
+}
+
+.current-move-circle {
+  background-color: #dd7f9f !important;
 }
