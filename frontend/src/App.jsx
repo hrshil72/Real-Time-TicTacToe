@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Sqaure from "./components/sqaure/Sqaure";
+import { io } from "socket.io-client";
 
 const App = () => {
   let sqaures = [
@@ -13,6 +14,7 @@ const App = () => {
   const [finishedState, setFinishedState] = useState(false);
   const [finishedArrayState, setFinishedArrayState] = useState([]);
   const [playOnline, setPlayOnline] = useState(false);
+  const [socket, setSocket] = useState(null);
 
   const checkWinner = () => {
     //for row
@@ -65,10 +67,24 @@ const App = () => {
     }
   }, [gameState]);
 
+  socket?.on("connect", () => {
+    setPlayOnline(true);
+  });
+
+  const handlePlayOnline = () => {
+    const newSocket = io("http://localhost:8080/", {
+      transports: ["websocket"],
+    });
+
+    setSocket(newSocket);
+  };
+
   if (!playOnline) {
     return (
       <div className="container">
-        <button className="play-online">Play Online</button>
+        <button onClick={handlePlayOnline} className="play-online">
+          Play Online
+        </button>
       </div>
     );
   }
