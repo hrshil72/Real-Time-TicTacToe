@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sqaure from "./components/sqaure/Sqaure";
 
 const App = () => {
@@ -10,6 +10,59 @@ const App = () => {
 
   const [gameState, setGameState] = useState(sqaures);
   const [currentPlayer, setCurrentPlayer] = useState("circle");
+  const [finishedState, setFinishedState] = useState(false);
+  const [finishedArrayState, setFinishedArrayState] = useState([]);
+
+  const checkWinner = () => {
+    //for row
+    for (let row = 0; row < gameState.length; row++) {
+      if (
+        gameState[row][0] === gameState[row][1] &&
+        gameState[row][1] === gameState[row][2]
+      ) {
+        setFinishedArrayState([row * 3 + 0, row * 3 + 1, row * 3 + 2]);
+        return gameState[row][0];
+      }
+    }
+
+    //for coloumn
+    for (let col = 0; col < gameState.length; col++) {
+      if (
+        gameState[0][col] === gameState[1][col] &&
+        gameState[1][col] === gameState[2][col]
+      ) {
+        setFinishedArrayState([0 * 3 + col, 1 * 3 + col, 2 * 3 + col]);
+        return gameState[0][col];
+      }
+    }
+
+    if (
+      gameState[0][0] === gameState[1][1] &&
+      gameState[1][1] === gameState[2][2]
+    )
+      return gameState[0][0];
+    if (
+      gameState[0][2] === gameState[1][1] &&
+      gameState[1][1] === gameState[2][0]
+    )
+      return gameState[0][2];
+
+    const isDrawMatch = gameState.flat().every((e) => {
+      if (e === "circle" || e === "cross") return true;
+    });
+
+    if (isDrawMatch) return "draw";
+
+    return null;
+  };
+
+  useEffect(() => {
+    const winner = checkWinner();
+
+    if (winner) {
+      setFinishedState(winner);
+    }
+  }, [gameState]);
 
   return (
     <div className="container">
@@ -19,19 +72,29 @@ const App = () => {
       </div>
       <div className="game-heading water-bg">Tic Tac Toe</div>
       <div className="sqaure-wrapper">
-        {gameState.map((item) => {
-          return item.map((e) => {
+        {gameState.map((item, rowIndex) => {
+          return item.map((e, colIndex) => {
             return (
               <Sqaure
                 currentPlayer={currentPlayer}
                 setCurrentPlayer={setCurrentPlayer}
                 setGameState={setGameState}
-                id={e}
-                key={e}
+                finishedState={finishedState}
+                finishedArrayState={finishedArrayState}
+                id={rowIndex * 3 + colIndex}
+                key={rowIndex * 3 + colIndex}
               />
             );
           });
         })}
+      </div>
+      <div>
+        {finishedState && finishedState !== "draw" && (
+          <h2>{finishedState} has won the game</h2>
+        )}
+      </div>
+      <div>
+        {finishedState && finishedState === "draw" && <h2>It's a Draw!</h2>}
       </div>
     </div>
   );
