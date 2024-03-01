@@ -1,18 +1,16 @@
 const express = require("express");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
+const cors = require("cors");
 
 const app = express();
 const httpServer = createServer(app);
-const io = new Server(httpServer, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-  },
-});
+const io = new Server(httpServer);
 
 const allUsers = {};
 const allRooms = [];
+
+app.use(cors({ origin: "https://real-time-tic-tac-toe-game.vercel.app/" }));
 
 app.get("/", (req, res) => {
   res.send("Hello, this is your Express server!");
