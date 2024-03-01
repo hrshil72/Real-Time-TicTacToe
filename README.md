@@ -25,14 +25,17 @@ Check out the live demo: [Real-Time Tic Tac Toe](link-to-live-demo)
 
 ## How to Run Locally
 
+## How to Run Locally
+
 1. Clone the repository
 2. Navigate to the project directory
-3. Run `npm install` to install dependencies
-4. Run `npm run start` to start the NodeJS server
-5. Open another terminal and navigate to the `client` directory
-6. Run `npm install` to install client dependencies
-7. Run `npm start` to start the React development server
-8. Open your browser and visit `http://localhost:3000`
+3. Navigate to the `frontend` directory for the frontend
+4. Run `npm install` to install Vite dependencies
+5. Run `npm run dev` to start the Vite development server for the frontend (default port: 5173)
+6. Open another terminal and navigate to the `backend` directory for the backend
+7. Run `npm install` to install NodeJS dependencies
+8. Run `npm start` to start the NodeJS server for the backend (default port: 8080)
+9. Open your browser and visit `http://localhost:5173` to play Real-Time Tic Tac Toe
 
 ## Contributing
 
