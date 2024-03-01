@@ -6,7 +6,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
@@ -91,4 +91,6 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(8080);
+httpServer.listen(8080, () => {
+  console.log(`Server is running on port 8080`);
+});
