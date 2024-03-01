@@ -1,13 +1,22 @@
+const express = require("express");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 
-const httpServer = createServer();
+const app = express();
+const httpServer = createServer(app);
 const io = new Server(httpServer, {
-  cors: "http://localhost:5173/",
+  cors: {
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+  },
 });
 
 const allUsers = {};
 const allRooms = [];
+
+app.get("/", (req, res) => {
+  res.send("Hello, this is your Express server!");
+});
 
 io.on("connection", (socket) => {
   allUsers[socket.id] = {
@@ -82,4 +91,4 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(3000);
+httpServer.listen(8080);
