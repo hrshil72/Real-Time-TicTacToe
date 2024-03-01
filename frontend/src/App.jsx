@@ -128,7 +128,7 @@ const App = () => {
     const username = result.value;
     setPlayerName(username);
 
-    const newSocket = io("http://localhost:8080/", {
+    const newSocket = io("https://real-time-tictactoe.onrender.com", {
       autoConnect: true,
     });
 
