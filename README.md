@@ -25,8 +25,6 @@ Check out the live demo: [Real-Time Tic Tac Toe](link-to-live-demo)
 
 ## How to Run Locally
 
-## How to Run Locally
-
 1. Clone the repository
 2. Navigate to the project directory
 3. Navigate to the `frontend` directory for the frontend
