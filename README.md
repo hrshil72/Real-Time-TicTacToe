@@ -1,6 +1,6 @@
 # Real-Time Tic Tac Toe
 
-![Project Demo](link-to-project-demo-gif-or-screenshot)
+![Project Demo](https://i.ibb.co/bK6jzLH/Screenshot-2024-03-01-221417.png)
 
 ## Overview
 
@@ -15,7 +15,7 @@ This project is a Real-Time Tic Tac Toe game where two players can play simultan
 
 ## Demo
 
-Check out the live demo: [Real-Time Tic Tac Toe](link-to-live-demo)
+Check out the live demo: [Real-Time Tic Tac Toe](https://real-time-tic-tac-toe-game.vercel.app/)
 
 ## Tech Stack
 
